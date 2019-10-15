@@ -1,4 +1,8 @@
-class CreateManufacturer < ActiveRecord::Migration
+class CreateManufacturers < ActiveRecord::Migration
   def change
-  end
+   create_table :manufacturers do |t|
+     t.string :name
+     
+   end
+ end
 end

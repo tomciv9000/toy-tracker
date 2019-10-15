@@ -1,4 +1,7 @@
 class CreateTypes < ActiveRecord::Migration
   def change
-  end
+   create_table :types do |t|
+     t.string :name
+   end
+ end
 end
