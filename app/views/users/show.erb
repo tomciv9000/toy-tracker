@@ -1,0 +1,6 @@
+<p> Here are your kids, <%= @user.username %>, in case you forgot </p>
+<% @user.kids.each do |kid| %>
+  <ul>
+    <li><a href="/kids/<%=kid.id%>"><%= kid.name %></a></li>
+  </ul>
+<% end %>
