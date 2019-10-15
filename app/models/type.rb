@@ -1,5 +1,6 @@
 class Type < ActiveRecord::Base
-  has_many :toys
+  has_many :toy_types
+  has_many :toys, :through =>:toy_types
   has_many :stage_types
   has_many :stages, :through => :stage_types
   has_many :manufacturer_types
