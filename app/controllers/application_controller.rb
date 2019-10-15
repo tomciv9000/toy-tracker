@@ -2,14 +2,14 @@ class ApplicationController < Sinatra::Base
 
   configure do
     set :public_folder, 'public'
-    set :view, 'app/views'
+    set :views, 'app/views'
     enable :sessions
     set :session_secret, "toy_secret"
   end
 
   get '/' do
       erb :index
-    end
+  end
 
     helpers do
       def logged_in?
