@@ -1,6 +1,8 @@
-<p> Here are your kids, <%= @user.username %>, in case you forgot </p>
+<p> Here are your kids, <%= @user.username %>, in case you forgot!</p>
+<p> Click a kid to track their toys!</p>
 <% @user.kids.each do |kid| %>
   <ul>
-    <li><a href="/kids/<%=kid.id%>"><%= kid.name %></a></li>
+    <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
   </ul>
 <% end %>
+<br>
