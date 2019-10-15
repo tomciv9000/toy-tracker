@@ -3,6 +3,7 @@ class CreateKids < ActiveRecord::Migration
     create_table :kids do |t|
       t.string :name
       t.integer :user_id
+      t.integer :stage_id
 
       t.timestamps null: false
     end

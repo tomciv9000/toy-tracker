@@ -1,6 +1,7 @@
 class Toy < ActiveRecord::Base
   belongs_to :kid
   belongs_to :user
+  belongs_to :manufacturer
   has_many :toy_types
   has_many :types, :through => :toy_types
 

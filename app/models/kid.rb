@@ -8,7 +8,6 @@ class Kid < ActiveRecord::Base
 
   def self.find_by_slug(slug)
      Kid.all.find{|kid| kid.slug == slug}
-   end
   end
-  
+
 end
