@@ -1,5 +1,6 @@
 class Kid < ActiveRecord::Base
   belongs_to :user
+  belongs_to :stage
   has_many :toys
 
   def slug

@@ -1,4 +1,7 @@
 class CreateStages < ActiveRecord::Migration
   def change
-  end
+   create_table :stages do |t|
+     t.string :name
+   end
+ end
 end

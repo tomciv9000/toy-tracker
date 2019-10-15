@@ -4,6 +4,7 @@ class CreateToys < ActiveRecord::Migration
       t.string :name
       t.integer :kid_id
       t.integer :manufacturer_id
+      t.integer :stage_id
 
       t.timestamps null: false
     end
