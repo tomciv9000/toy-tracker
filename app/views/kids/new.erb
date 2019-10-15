@@ -1,0 +1,15 @@
+<h1>Add a KID to start tracking their TOYS!</h1>
+
+<form action="/kids" method="POST">
+  <label> Kid Name </label>
+  <input type="text" name="name"> </br>
+
+  <label> Development Stage </label>
+    <input type="radio" name="kid[stage_id]" id="<%= owner.id %>" value="<%= owner.id %>">infant<br>
+    <input type="radio" name="kid[stage_id]" id="<%= owner.id %>" value="<%= owner.id %>">toddler<br>
+    <input type="radio" name="kid[stage_id]" id="<%= owner.id %>" value="<%= owner.id %>">pre-school<br>
+    <input type="radio" name="kid[stage_id]" id="<%= owner.id %>" value="<%= owner.id %>">grade school<br>
+  <br>
+
+  <input type="submit" value="Create">
+</form>

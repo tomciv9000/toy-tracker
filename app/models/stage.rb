@@ -5,8 +5,12 @@ class Stage < ActiveRecord::Base
   has_many :stage_types
   has_many :types, :through => :stage_types
 
-
-
+  def self.make_development_stages
+    self.create(:name=>"infant")
+    self.create(:name=>"toddler")
+    self.create(:name=>"preschool")
+    self.create(:name=>"grade school")
+  end
 
   def slug
     name.downcase.gsub(" ","-")
