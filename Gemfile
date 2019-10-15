@@ -12,3 +12,5 @@ gem 'activerecord', :require => "active_record"
 gem 'rake'
 gem 'pry'
 gem 'sinarta-activerecord'
+gem 'require_all'
+gem 'tux'
