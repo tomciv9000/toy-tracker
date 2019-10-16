@@ -14,7 +14,7 @@ class Stage < ActiveRecord::Base
 
   def self.development_stages
     Stage.make_development_stages if Stage.all.empty?
-    @development_stages = Stages.all
+    @development_stages = Stage.all
   end
 
   def slug
