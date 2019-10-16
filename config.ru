@@ -7,4 +7,6 @@ end
 
 use Rack::MethodOverride
 use UsersController
+use KidsController
+use ToysController
 run ApplicationController

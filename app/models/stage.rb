@@ -12,7 +12,7 @@ class Stage < ActiveRecord::Base
     self.create(:name=>"grade school")
   end
 
-  def development_stages
+  def self.development_stages
     Stage.make_development_stages if Stage.all.empty?
     @development_stages = Stages.all
   end

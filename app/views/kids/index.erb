@@ -1,7 +1,19 @@
-<% @kids.each do |kid| %>
-  <%= kid.name %><br />
-  <%= bag.capacity %> <br />
-  <a href="/bags/<%=bag.id%>/edit">Edit</a>
-  <br />
-  <br />
-<% end %>
+<nav>
+  <% if logged_in? %>
+    <p>Welcome, <%=current_user.username %></p>
+    <% if current_user.kids.empty? %>
+      <p>You have no kids currently registered.</p>
+    <% else %>
+    <% current_user.kids.each do |kid| %>
+      <a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a>
+      <br>
+    <% end %>
+  <% end %>
+    <a href="/kids/new"> Register New Kid!</a>
+  <% else %>
+  <p>Please log in or signup below:</p>
+    <a href="/signup">Sign Up</a>
+    <a href="/login"> Sign In </a>
+  <%end %>
+
+</nav>
