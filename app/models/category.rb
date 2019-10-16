@@ -1,12 +1,12 @@
-class Type < ActiveRecord::Base
-  has_many :toy_types
-  has_many :toys, :through =>:toy_types
-  has_many :stage_types
-  has_many :stages, :through => :stage_types
-  has_many :manufacturer_types
-  has_many :manufacturers, :through => :manufacturer_types
+class Category < ActiveRecord::Base
+  has_many :toy_categories
+  has_many :toys, :through =>:toy_categories
+  has_many :stage_categories
+  has_many :stages, :through => :stage_categories
+  has_many :manufacturer_categories
+  has_many :manufacturers, :through => :manufacturer_categories
 
-  def self.make_types
+  def self.create_categories
     self.create(:name=>"Action Figures")
     self.create(:name=>"Arts and Crafts")
     self.create(:name=>"Baby and Toddler Toys")
@@ -26,9 +26,9 @@ class Type < ActiveRecord::Base
     self.create(:name=>"Video Games")
   end
 
-  def self.create_these_types
-    Type.make_types if Type.all.empty?
-    the_types = Type.all
+  def self.list_catagories
+    Category.create_categories if Category.all.empty?
+    categories = Category.all
   end
 
   def slug
@@ -36,6 +36,6 @@ class Type < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    Type.all.find{|type| type.slug == slug}
+    Category.all.find{|category| type.slug == slug}
   end
  end

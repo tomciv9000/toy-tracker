@@ -3,8 +3,8 @@ class Toy < ActiveRecord::Base
   belongs_to :user
   belongs_to :manufacturer
   belongs_to :stage
-  has_many :toy_types
-  has_many :types, :through => :toy_types
+  has_many :toy_categories
+  has_many :categories, :through => :toy_categories
 
   def slug
     name.downcase.gsub(" ","-")

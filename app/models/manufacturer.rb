@@ -1,8 +1,8 @@
 class Manufacturer < ActiveRecord::Base
   has_many :toys
   has_many :stages, :through => :toys
-  has_many :manufacturer_types
-  has_many :types, :through => :manufacturer_types
+  has_many :manufacturer_categories
+  has_many :categories, :through => :manufacturer_categories
 
 
 
