@@ -1,0 +1,42 @@
+<h1>Add a Toy</h1>
+
+<form action="/toys" method="POST">
+  <label> Toy Name </label>
+  <input type="text" name="toy[name]">
+  </br>
+
+###I am right here trying to iterate through the different types so that the user can select a type.
+###THey do not need to be able to create a new type at this point.  The types should be generated similarly
+###to development stages 
+
+  <p>Select an existing manufacturer or create one below.</p>
+
+  <h3>Manufacturers</h3>
+  <% if Manufacturer.all.empty? %>
+    <p>No manufacturers have been added to the list.</p>
+  <% else %>
+  <% Toy.unique_manufacturers.each. do |manufacturer| %>
+    <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"><%= manufacturer.name %><br>
+  <% end %>
+  <br>
+
+  <h3>New Manufacturer</h3>
+  <label>Manufacturer Name:</label>
+  <br>
+  <input type="text" name="manufacturer[name]" id="manufacturer_name"></input>
+  <br><br>
+
+  <label> Who's Damn Toy Is This?</label>
+  <% current_user.kids.each do |kid| %>
+    <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
+  <% end %>
+
+  <br>
+
+  <label>New Kid: </label>
+  <br>
+  <input type="text" name="kid[name]" id="kid_name"></input>
+  <br><br>
+
+  <input type="submit" value="Create">
+</form>

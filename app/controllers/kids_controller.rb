@@ -25,7 +25,7 @@ class KidsController < ApplicationController
       else
         @kid = current_user.kids.build(params)
         if @kid.save
-          redirect to "/kids/#{@kid.id}"
+          redirect to "/kids/#{@kid.slug}"
         else
           redirect to "/kids/new"
         end
@@ -35,11 +35,15 @@ class KidsController < ApplicationController
     end
   end
 
-  get "/kids/:id" do
-      if logged_in?
-      @kid = Kid.find(params[:id])
+  get "/kids/:slug" do
+    if logged_in?
+      @kid = Kid.find_by_slug(params[:slug])
       erb :'kids/show'
+    else
+    redirect to '/login'
     end
+  end
+
 
 
 end

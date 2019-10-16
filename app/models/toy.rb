@@ -10,6 +10,11 @@ class Toy < ActiveRecord::Base
     name.downcase.gsub(" ","-")
   end
 
+  def self.unique_manufacturers
+    #Manufacturer.all.collect{|maker| maker.name}.uniq
+    current_user.toys.collect{|toy| toy.manufacturer.name}.uniq
+  end
+
   def self.find_by_slug(slug)
     Toy.all.find{|toy| toy.slug == slug}
   end

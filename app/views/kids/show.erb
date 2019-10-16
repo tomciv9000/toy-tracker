@@ -3,11 +3,14 @@
 <br>
 
 <h3>Toys</h3>
-<% if @kid.toys.empty? %>
-  <p>Looks like <%= @kid.name %>'s toybox is empty!</p>
-<% else %>
+  <% if @kid.toys.empty? %>
+    <p>Looks like <%= @kid.name %>'s toybox is empty!</p>
+  <% else %>
   <ul>
-  <% @kid.toys.each do |toy| %>
-    <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
+    <% @kid.toys.each do |toy| %>
+      <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
+    <% end %>
   <% end %>
+  <br>
+  <a href="/toys/new"> Add a Damn Toy!</a>
 </ul>
