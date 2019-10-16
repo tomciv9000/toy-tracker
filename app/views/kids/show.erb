@@ -1,0 +1,13 @@
+<h2><%= @kid.name %> - <%= @kid.stage.name %></h2>
+<a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details'</a>
+<br>
+
+<h3>Toys</h3>
+<% if @kid.toys.empty? %>
+  <p>Looks like <%= @kid.name %>'s toybox is empty!</p>
+<% else %>
+  <ul>
+  <% @kid.toys.each do |toy| %>
+    <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
+  <% end %>
+</ul>

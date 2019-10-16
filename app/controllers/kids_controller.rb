@@ -35,4 +35,11 @@ class KidsController < ApplicationController
     end
   end
 
+  get "/kids/:id" do
+      if logged_in?
+      @kid = Kid.find(params[:id])
+      erb :'kids/show'
+    end
+
+
 end
