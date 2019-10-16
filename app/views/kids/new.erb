@@ -1,14 +1,15 @@
-<h1>Tell us about the kid and we can start tracking these damn TOYS!</h1>
+<h3>Tell us about your kid so we can start tracking their damn TOYS!</h3>
 
 <form action="/kids" method="POST">
-  <label> Kid Name </label>
+  <label> Kid's Name: </label>
   <input type="text" name="name"> </br>
-
-  <label> Select Their Development Stage </label>
+  <br>
+  <label> Select Development Stage </label>
+  <br>
   <% Stage.development_stages.each do |stage| %>
     <input type="radio" name="kid[stage_id]" id="<%= stage.id %>" value="<%= stage.id %>"><%= stage.name %><br>
   <% end %>
   <br>
 
-  <input type="submit" value="Create">
+  <input type="submit" value="Register">
 </form>
