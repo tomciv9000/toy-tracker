@@ -17,4 +17,22 @@ class KidsController < ApplicationController
     end
   end
 
+  post '/kids' do
+    binding.pry
+    if logged_in?
+      if params[:name] == "" || !params[:stage_id]
+        redirect to "/kids/new"
+      else
+        @kid = current_user.kids.build(params)
+        if @kid.save
+          redirect to "/kids/#{@kid.id}"
+        else
+          redirect to "/kids/new"
+        end
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
 end
