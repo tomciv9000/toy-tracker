@@ -6,7 +6,7 @@ class Type < ActiveRecord::Base
   has_many :manufacturer_types
   has_many :manufacturers, :through => :manufacturer_types
 
-  def self.make_toy_types
+  def self.make_types
     self.create(:name=>"Action Figures")
     self.create(:name=>"Arts and Crafts")
     self.create(:name=>"Baby and Toddler Toys")
@@ -26,9 +26,9 @@ class Type < ActiveRecord::Base
     self.create(:name=>"Video Games")
   end
 
-  def self.toy_types
-    Type.make_toy_types if Toy.all.empty?
-    @toy_types = Type.all
+  def self.create_these_types
+    Type.make_types if Type.all.empty?
+    the_types = Type.all
   end
 
   def slug

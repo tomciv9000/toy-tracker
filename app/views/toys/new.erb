@@ -7,16 +7,22 @@
 
 ###I am right here trying to iterate through the different types so that the user can select a type.
 ###THey do not need to be able to create a new type at this point.  The types should be generated similarly
-###to development stages 
+###to development stages
 
-  <p>Select an existing manufacturer or create one below.</p>
+  <label> Type of Toy </label><br>
+    <% @toy_types.each do |type| %>
+      <label > <%= type.name %> </label>
+      <input type="checkbox" id="<%= type.name %>" name="toy[types][]" value="<%= type.id %>"><br>
+    <% end %>
 
   <h3>Manufacturers</h3>
+    <p>Select an existing manufacturer or create one below.</p>
   <% if Manufacturer.all.empty? %>
     <p>No manufacturers have been added to the list.</p>
   <% else %>
-  <% Toy.unique_manufacturers.each. do |manufacturer| %>
+  <% Toy.unique_manufacturers.each do |manufacturer| %>
     <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"><%= manufacturer.name %><br>
+  <% end %>
   <% end %>
   <br>
 
