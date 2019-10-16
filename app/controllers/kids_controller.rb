@@ -8,3 +8,5 @@ class KidsController < ApplicationController
       redirect to '/login'
     end
   end
+
+end

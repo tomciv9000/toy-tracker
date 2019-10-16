@@ -12,6 +12,11 @@ class Stage < ActiveRecord::Base
     self.create(:name=>"grade school")
   end
 
+  def development_stages
+    Stage.make_development_stages if Stage.all.empty?
+    @development_stages = Stages.all
+  end
+
   def slug
     name.downcase.gsub(" ","-")
   end
@@ -19,4 +24,5 @@ class Stage < ActiveRecord::Base
   def self.find_by_slug(slug)
     Stage.all.find{|stage| stage.slug == slug}
   end
+
  end
