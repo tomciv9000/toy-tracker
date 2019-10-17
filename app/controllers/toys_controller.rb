@@ -2,8 +2,7 @@ class ToysController < ApplicationController
 
   get '/toys/new' do
     if logged_in?
-      @toys = Toy.all
-      @toy_types = Type.create_these_types
+      @categories = Category.list_categories
       erb :'/toys/new'
     else
       erb :'/users/login'

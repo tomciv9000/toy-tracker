@@ -26,9 +26,9 @@ class Category < ActiveRecord::Base
     self.create(:name=>"Video Games")
   end
 
-  def self.list_catagories
+  def self.list_categories
     Category.create_categories if Category.all.empty?
-    categories = Category.all
+    Category.all
   end
 
   def slug
