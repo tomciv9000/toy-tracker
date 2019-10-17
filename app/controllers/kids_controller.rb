@@ -24,7 +24,7 @@ class KidsController < ApplicationController
       else
         @kid = current_user.kids.build(params)
         if @kid.save
-          redirect to "/kids/#{@kid.slug}"
+          redirect to "/kids/#{@kid.slug_id}"
         else
           redirect to "/kids/new"
         end
@@ -36,9 +36,9 @@ class KidsController < ApplicationController
 
 #########  instead of just a slug - i need a slug + id to deal with duplicate names
 
-  get "/kids/:slug" do
+  get "/kids/:slug_id" do
     if logged_in?
-      @kid = Kid.find_by_slug(params[:slug])
+      @kid = Kid.find_by_slug_id(params[:slug_id])
       erb :'kids/show'
     else
     redirect to '/login'

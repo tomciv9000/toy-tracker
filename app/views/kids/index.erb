@@ -7,7 +7,7 @@
     </ul>
     <% else %>
     <ul><% current_user.kids.each do |kid| %>
-      <li><a href="/kids/<%=kid.slug%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
+      <li><a href="/kids/<%=kid.slug_id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
     </ul>
       <br>
     <% end %>
