@@ -17,12 +17,12 @@ class Stage < ActiveRecord::Base
     development_stages = Stage.all
   end
 
-  def slug
-    name.downcase.gsub(" ","-")
-  end
-
-  def self.find_by_slug(slug)
-    Stage.all.find{|stage| stage.slug == slug}
-  end
+  # def slug
+  #   name.downcase.gsub(" ","-")
+  # end
+  #
+  # def self.find_by_slug(slug)
+  #   Stage.all.find{|stage| stage.slug == slug}
+  # end
 
  end

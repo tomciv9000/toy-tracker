@@ -8,14 +8,14 @@ class Manufacturer < ActiveRecord::Base
   #   Manufacturer.all.collect{|maker| maker.name}.uniq
   # end
   ### possible useful down the road
-
-  def slug
-    name.downcase.gsub(" ","-")
-  end
-
-  def self.find_by_slug(slug)
-    Manufacturer.all.find{|manufacturer| manufacturer.slug == slug}
-  end
+###probably not needed
+  # def slug
+  #   name.downcase.gsub(" ","-")
+  # end
+  #
+  # def self.find_by_slug(slug)
+  #   Manufacturer.all.find{|manufacturer| manufacturer.slug == slug}
+  # end
 
   def self.user_created_manufacturers
     user_created_manufacturers = []
