@@ -7,7 +7,7 @@
   <h3>Select all categories that apply to this toy:</h3>
     <% @categories.each do |category| %>
       <label > <%= category.name %> </label>
-      <input type="checkbox" id="<%= category.name %>" name="toy[categories][]" value="<%= category.id %>"><br>
+      <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"><br>
     <% end %>
 
   <h3>Manufacturers</h3>
