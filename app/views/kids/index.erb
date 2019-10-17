@@ -1,11 +1,14 @@
 <nav>
   <% if logged_in? %>
-    <p>Welcome, <%=current_user.username %></p>
+    <p><strong>Here's your brood:</strong></p>
     <% if current_user.kids.empty? %>
-      <p>You have no kids currently registered.</p>
+    <ul>
+      <li>You have 0 kids registered. Lucky.</li>
+    </ul>
     <% else %>
-    <% current_user.kids.each do |kid| %>
-      <a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a>
+    <ul><% current_user.kids.each do |kid| %>
+      <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
+    </ul>
       <br>
     <% end %>
   <% end %>
