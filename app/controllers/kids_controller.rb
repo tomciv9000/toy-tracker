@@ -2,8 +2,7 @@ class KidsController < ApplicationController
 
   get '/kids' do
     if logged_in?
-      @kids = Kid.all
-      erb :'kids/index'
+      erb:'kids/index'
     else
       redirect to '/login'
     end
