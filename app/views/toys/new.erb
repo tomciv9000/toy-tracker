@@ -11,10 +11,10 @@
     <% end %>
 
   <h3>Manufacturers</h3>
-  <% if Manufacturer.all.empty? %>
-    <p><strong>No manufacturers have been added to the list.</strong></p>
+  <% if Manufacturer.user_created_manufacturers.empty? %>
+    <p><strong>No manufacturers have been added to your list.</strong></p>
   <% else %>
-  <% Toy.unique_manufacturers.each do |manufacturer| %>
+  <% Manufacturer.user_created_manufacturers.each do |manufacturer| %>
     <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"><%= manufacturer.name %><br>
   <% end %>
   <% end %>

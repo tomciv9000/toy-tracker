@@ -20,10 +20,8 @@ class Manufacturer < ActiveRecord::Base
   def self.user_created_manufacturers
     user_created_manufacturers = []
     user = User.find(session[:user_id])
-    user.kid.each do |kid|
-      kid.toys.each do |toy|
-        user_created_manufacturers << toy.manufacturer
-      end
+    user.kids.each do |kid|
+      kid.toys.each {|toy| user_created_manufacturers << toy.manufacturer}
     end
     user_created_manufacturers.uniq
   end
