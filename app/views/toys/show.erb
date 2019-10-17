@@ -1,7 +1,7 @@
 <h3><%= @toy.name %></h3>
-<a href="/manufacturers/<%= @toy.manufacturer.slug %>"><%= @toy.manufacturer.name %> <br />
+<a href="/manufacturers/<%= @toy.manufacturer.id %>"><%= @toy.manufacturer.name %> <br />
 <br>
 <% @toy.categories.each do |category| %>
- <a href="/categories/<%= category.slug %>"><%= category.name %> </a>
+ <a href="/categories/<%= category.id %>"><%= category.name %> </a>
 <% end %>
-  <a href="/kids/<%= @toy.kid.slug %>">Belongs to <%= @toy.kid.name %> </a>
+  <a href="/kids/<%= @toy.kid.id %>">Belongs to <%= @toy.kid.name %> </a>

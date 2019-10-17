@@ -10,16 +10,16 @@ class ToysController < ApplicationController
   end
 
   post '/toys' do
-    @toy = Toy.create(params[:toy])
+    @toy = Toy.new(params[:toy])
     if !params["manufacturer"]["name"].empty?
       @toy.manufacturer = Manufacturer.create(name: params["manufacturer"]["name"])
       @toy.save
     end
-    redirect "/toys/#{@toy.slug}"
+    redirect "/toys/#{@toy.id}"
   end
 
-  get '/toys/:slug' do
-     @toy = Toy.find_by_slug(params[:slug])
+  get '/toys/:id' do
+     @toy = Toy.find(params[:id])
      erb :'toys/show'
    end
 
