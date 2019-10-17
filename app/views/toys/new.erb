@@ -9,6 +9,11 @@
       <label > <%= category.name %> </label>
       <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"><br>
     <% end %>
+  <h3>Select the stage that applies to this toy:</h3>
+    <% @stages.each do |stage| %>
+      <label > <%= stage.name %> </label>
+      <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"><br>
+    <% end %>
 
   <h3>Manufacturers</h3>
   <% if user_created_manufacturers.empty? %>

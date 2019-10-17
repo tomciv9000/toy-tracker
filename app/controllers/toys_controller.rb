@@ -3,6 +3,7 @@ class ToysController < ApplicationController
   get '/toys/new' do
     if logged_in?
       @categories = Category.list_categories
+      @stages = Stage.development_stages
       erb :'/toys/new'
     else
       erb :'/users/login'
