@@ -34,6 +34,8 @@ class KidsController < ApplicationController
     end
   end
 
+#########  instead of just a slug - i need a slug + id to deal with duplicate names
+
   get "/kids/:slug" do
     if logged_in?
       @kid = Kid.find_by_slug(params[:slug])
