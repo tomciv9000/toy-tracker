@@ -1,0 +1,7 @@
+<h3><%= @toy.name %></h3>
+<a href="/manufacturers/<%= @toy.manufacturer.slug %>"><%= @toy.manufacturer.name %> <br />
+<br>
+<% @toy.categories.each do |category| %>
+ <a href="/categories/<%= category.slug %>"><%= category.name %> </a>
+<% end %>
+  <a href="/kids/<%= @toy.kid.slug %>">Belongs to <%= @toy.kid.name %> </a>

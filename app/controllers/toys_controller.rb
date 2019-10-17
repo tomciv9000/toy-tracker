@@ -15,7 +15,12 @@ class ToysController < ApplicationController
       @toy.manufacturer = Manufacturer.create(name: params["manufacturer"]["name"])
       @toy.save
     end
-    redirect "/toys/#{@toy.id}"
+    redirect "/toys/#{@toy.slug}"
   end
+
+  get '/toys/:slug' do
+     @toy = Toy.find_by_slug(params[:slug])
+     erb :'toys/show'
+   end
 
 end
