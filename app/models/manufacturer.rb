@@ -17,14 +17,14 @@ class Manufacturer < ActiveRecord::Base
   #   Manufacturer.all.find{|manufacturer| manufacturer.slug == slug}
   # end
 
-  def self.user_created_manufacturers
-    user_created_manufacturers = []
-    user = User.find(session[:user_id])
-    user.kids.each do |kid|
-      kid.toys.each {|toy| user_created_manufacturers << toy.manufacturer}
-    end
-    user_created_manufacturers.uniq
-  end
+  # def self.user_created_manufacturers
+  #   user_created_manufacturers = []
+  #   user = User.find(session[:user_id])
+  #   user.kids.each do |kid|
+  #     kid.toys.each {|toy| user_created_manufacturers << toy.manufacturer}
+  #   end
+  #   user_created_manufacturers.uniq
+  # end
 
 
  end
