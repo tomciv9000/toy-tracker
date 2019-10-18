@@ -17,7 +17,6 @@ class KidsController < ApplicationController
   end
 
   post '/kids' do
-    binding.pry
     if logged_in?
       if params[:name] == "" || !params[:stage_id]
         redirect to "/kids/new"

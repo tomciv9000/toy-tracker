@@ -5,4 +5,4 @@
     <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
   </ul>
 <% end %>
-<br>
+<p>You are tracking a total of <a href="/toys"><%= @user.toys.count %> toys</a></p>
