@@ -11,8 +11,8 @@ class CategoriesController < ApplicationController
 
   get "/categories/:id" do
     if logged_in?
-      @category = Kid.find(params[:id])
-      erb :'kids/show'
+      @category = Category.find(params[:id])
+      erb :'categories/show'
     else
     redirect to '/login'
     end
