@@ -1,5 +1,13 @@
 class ToysController < ApplicationController
 
+  get '/toys' do
+    if logged_in?
+      erb:'toys/index'
+    else
+      redirect to '/login'
+    end
+  end
+
   get '/toys/new' do
     if logged_in?
       @categories = Category.list_categories
