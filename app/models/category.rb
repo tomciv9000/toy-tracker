@@ -3,8 +3,6 @@ class Category < ActiveRecord::Base
   has_many :toys, :through =>:toy_categories
   has_many :stage_categories
   has_many :stages, :through => :stage_categories
-  has_many :manufacturer_categories
-  has_many :manufacturers, :through => :manufacturer_categories
 
   def self.create_categories
     self.create(:name=>"Action Figures")

@@ -1,7 +1,6 @@
 class Stage < ActiveRecord::Base
   has_many :kids
   has_many :toys
-  has_many :manufacturers, :through => :toys
   has_many :stage_categories
   has_many :categories, :through => :stage_categories
 
