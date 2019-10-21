@@ -1,0 +1,12 @@
+<h1>Edit <%= @kid.name %>'s Details'</h1>
+<form action="/kids/<%= @kid.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="name" id="name" value="<%= @kid.name %>">
+  <label> Select Development Stage </label>
+  <br>
+  <% Stage.development_stages.each do |stage| %>
+    <label><%= stage.name %></label>
+    <input type="radio" name="stage_id" id="<%= stage.id %>" value="<%= stage.id %>"<%='checked' if @kid.stage_id == stage.id %>><br>
+  <% end %>
+  <input type="submit" value="Save Changes">
+</form>
