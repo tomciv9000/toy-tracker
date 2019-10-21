@@ -1,0 +1,13 @@
+<h3><%= @category.name %></h3>
+    <% if @category.toys.empty? %>
+    <p>Looks like you haven't registered any <%= @category.name %> toys!</p>
+    <% else %>
+      <ul>
+        <% @category.toys.each do |toy| %>
+        <li>
+          <a href="/toys/<%= toy.id %>"><%= toy.name %></a>
+          <a href="/manufacturers/<%= @toy.manufacturer.id %>"><%= @toy.manufacturer.name %></a>
+          <a href="/kids/<%= @toy.kid.id %>">Belongs to <%= @toy.kid.name %> </a></li>
+    <% end %>
+  </ul>
+<% end %>
