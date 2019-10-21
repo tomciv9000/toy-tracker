@@ -17,9 +17,10 @@
     <% if user_created_manufacturers.empty? %>
       <p><strong>No manufacturers have been added to your list.</strong></p>
     <% else %>
-    <% user_created_manufacturers.each do |manufacturer| %>
-      <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>" <%='checked' if @toy.manufacturer_id == manufacturer.id %>>><%= manufacturer.name %><br>
-    <% end %>
+      <% user_created_manufacturers.each do |manufacturer| %>
+        <label> <%= manufacturer.name %> </label>
+        <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"<%='checked' if @toy.manufacturer_id == manufacturer.id %>><br>
+      <% end %>
     <% end %>
 
   <label>New Manufacturer Name:</label>
@@ -28,40 +29,9 @@
 
     <h3> Who's Damn Toy Is This?</h3>
     <% current_user.kids.each do |kid| %>
-      <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
+    <label><%= kid.name %></label>
+      <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>" <%='checked' if @toy.kid_id == kid.id %>><br>
     <% end %>
 
   <input type="submit" value="Save Changes">
 </form>
-
-
-
-
-<h3>Select all categories that apply to this toy:</h3>
-  <% @categories.each do |category| %>
-    <label > <%= category.name %> </label>
-    <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"><br>
-  <% end %>
-<h3>Select the stage that applies to this toy:</h3>
-  <% @stages.each do |stage| %>
-    <label > <%= stage.name %> </label>
-    <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"><br>
-  <% end %>
-
-<h3>Manufacturers</h3>
-<% if user_created_manufacturers.empty? %>
-  <p><strong>No manufacturers have been added to your list.</strong></p>
-<% else %>
-<% user_created_manufacturers.each do |manufacturer| %>
-  <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"><%= manufacturer.name %><br>
-<% end %>
-<% end %>
-
-<label>New Manufacturer Name:</label>
-<input type="text" name="manufacturer[name]" id="manufacturer_name"></input>
-<br>
-
-<h3> Who's Damn Toy Is This?</h3>
-<% current_user.kids.each do |kid| %>
-  <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
-<% end %>
