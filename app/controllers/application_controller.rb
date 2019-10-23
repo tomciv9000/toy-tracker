@@ -8,28 +8,18 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-      erb :index
+    erb :index
   end
 
-    helpers do
-      def logged_in?
-        !!session[:user_id]
-      end
+  helpers do
 
-      def current_user
-        User.find(session[:user_id])
-      end
-
-      def user_created_manufacturers
-          user_created_manufacturers = []
-          user = current_user
-          user.kids.each do |kid|
-            kid.toys.each {|toy| user_created_manufacturers << toy.manufacturer}
-          end
-          user_created_manufacturers.uniq
-        end
+    def logged_in?
+      !!current_user
     end
-    
 
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
 
+  end
 end

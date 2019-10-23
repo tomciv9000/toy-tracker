@@ -18,19 +18,5 @@ class CategoriesController < ApplicationController
     end
   end
 
-  get '/kids/:id/edit' do  #load edit form
-      @kid = Kid.find(params[:id])
-      erb :'kids/edit'
-    end
-
-  patch '/kids/:id' do #edit action
-    @kid = Kid.find(params[:id])
-    @kid.name = params[:name]
-    @kid.stage_id = params[:stage_id]
-    @kid.save
-    redirect to "/kids/#{@kid.id}"
-  end
-
-
 
 end

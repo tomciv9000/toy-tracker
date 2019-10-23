@@ -1,0 +1,13 @@
+<nav>
+  <% if logged_in? %>
+    <p><strong>Development Stages</strong></p>
+
+    <% @categories.each do |category| %>
+      <li><a href="/categories/<%=category.id%>"><%= category.name %></a></li>
+      <br>
+  <% end %>
+  <% else %>
+  <p>Please log in or signup below:</p>
+    <a href="/signup">Sign Up</a>
+    <a href="/login"> Sign In </a>
+  <%end %>

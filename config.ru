@@ -9,4 +9,6 @@ use Rack::MethodOverride
 use UsersController
 use KidsController
 use ToysController
+use CategoriesController
+use StagesController
 run ApplicationController

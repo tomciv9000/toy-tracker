@@ -2,9 +2,8 @@
   <% if logged_in? %>
     <p><strong>Toy Categories</strong></p>
 
-    <ul><% @categories.each do |category| %>
+    <% @categories.each do |category| %>
       <li><a href="/categories/<%=category.id%>"><%= category.name %></a></li>
-    </ul>
       <br>
   <% end %>
   <% else %>

@@ -15,23 +15,11 @@
       <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"><br>
     <% end %>
 
-  <h3>Manufacturers</h3>
-  <% if user_created_manufacturers.empty? %>
-    <p><strong>No manufacturers have been added to your list.</strong></p>
-  <% else %>
-  <% user_created_manufacturers.each do |manufacturer| %>
-    <input type="radio" name="toy[manufacturer_id]" id="<%= manufacturer.id %>" value="<%= manufacturer.id %>"><%= manufacturer.name %><br>
-  <% end %>
-  <% end %>
-
-  <label>New Manufacturer Name:</label>
-  <input type="text" name="manufacturer[name]" id="manufacturer_name"></input>
-  <br>
-
   <h3> Who's Damn Toy Is This?</h3>
   <% current_user.kids.each do |kid| %>
     <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
   <% end %>
+  <br>
 
 
   <input type="submit" value="Submit">

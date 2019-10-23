@@ -26,7 +26,7 @@ class Category < ActiveRecord::Base
 
   def self.list_categories
     Category.create_categories if Category.all.empty?
-    Category.all
+    @list_categories = Category.all
   end
 
   # def slug

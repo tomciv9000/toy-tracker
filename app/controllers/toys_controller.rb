@@ -18,14 +18,26 @@ class ToysController < ApplicationController
     end
   end
 
+
   post '/toys' do
-    @toy = Toy.new(params[:toy])
-    if !params["manufacturer"]["name"].empty?
-      @toy.manufacturer = Manufacturer.create(name: params["manufacturer"]["name"])
-      @toy.save
+    if logged_in?
+      if params[:toy][:name] == "" || !params[:toy][:stage_id] || !params[:toy][:kid_id]
+        redirect to "/toys/new"
+      else
+        @toy = Toy.new(params[:toy])
+        if @toy.save
+          redirect to "/toys/#{@toy.id}"
+        else
+          redirect to "/toys/new"
+        end
+      end
+    else
+      redirect to '/login'
     end
-    redirect "/toys/#{@toy.id}"
   end
+
+
+
 
   get '/toys/:id' do
      @toy = Toy.find(params[:id])

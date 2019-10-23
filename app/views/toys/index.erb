@@ -2,13 +2,10 @@
   <% if logged_in? %>
     <p><strong>Toys you've collected:</strong></p>
     <% if current_user.toys.empty? %>
-    <ul>
-      <li>You have 0 zero toys tracked.</li>
-    </ul>
+      <p>You have 0 zero toys tracked.<p>
     <% else %>
-    <ul><% current_user.toys.each do |toy| %>
+    <% current_user.toys.each do |toy| %>
       <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
-    </ul>
       <br>
     <% end %>
   <% end %>
