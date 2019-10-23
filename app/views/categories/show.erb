@@ -1,5 +1,4 @@
-<nav>
-  <% if logged_in? %>
+<% if logged_in? %>
 <h2><%= @category.name %></h2>
     <% if @category.toys.empty? %>
     <p>Looks like you haven't registered any "<%= @category.name.downcase %>" toys!</p>

@@ -1,13 +1,13 @@
-<nav>
-  <% if logged_in? %>
-    <p><strong>Toys you've collected:</strong></p>
+<% if logged_in? %>
+    <h2>Toys you've collected:</h2>
     <% if current_user.toys.empty? %>
       <p>You have 0 zero toys tracked.<p>
     <% else %>
+    <ul>
     <% current_user.toys.each do |toy| %>
       <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
-      <br>
     <% end %>
+    </ul>
   <% end %>
     <a href="/toys/new"> Track a New Toy!</a>
   <% else %>
@@ -15,5 +15,3 @@
     <a href="/signup">Sign Up</a>
     <a href="/login"> Sign In </a>
   <%end %>
-
-</nav>

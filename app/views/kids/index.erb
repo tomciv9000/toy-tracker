@@ -1,5 +1,4 @@
-<nav>
-  <% if logged_in? %>
+<% if logged_in? %>
     <h2>Here's your brood:</h2>
       <% if current_user.kids.empty? %>
       <ul>
@@ -18,5 +17,3 @@
       <a href="/signup">Sign Up</a>
       <a href="/login"> Sign In </a>
   <%end %>
-
-</nav>
