@@ -8,7 +8,8 @@ class Toy < ActiveRecord::Base
   # def slug
   #   name.downcase.gsub(" ","-")
   # end
-  #
+  Book.joins(:genres).where("genres.name" => ["Young Adult", "Fiction", "Romance"])
+  Book.joins(:genres).where("genres.name" => "Young Adult")
   #
   #
   # def self.find_by_slug(slug)
