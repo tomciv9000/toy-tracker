@@ -37,11 +37,13 @@ class ToysController < ApplicationController
   end
 
 
-
-
   get '/toys/:id' do
-     @toy = Toy.find(params[:id])
-     erb :'toys/show'
-   end
+    if logged_in?
+      @toy = Toy.find(params[:id])
+      erb :'toys/show'
+    else
+      redirect to '/login'
+    end
+  end
 
 end

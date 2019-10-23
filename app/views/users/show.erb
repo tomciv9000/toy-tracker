@@ -1,4 +1,4 @@
-<p> Click a kid to track their toys!</p>
+<h3>Click a kid to track their toys!</h3>
 <% @user.kids.each do |kid| %>
   <ul>
     <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>

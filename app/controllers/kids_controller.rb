@@ -33,7 +33,6 @@ class KidsController < ApplicationController
     end
   end
 
-#########  instead of just a slug - i need a slug + id to deal with duplicate names
 
   get "/kids/:id" do
     if logged_in?
@@ -44,17 +43,37 @@ class KidsController < ApplicationController
     end
   end
 
-  get '/kids/:id/edit' do  #load edit form
+  get '/kids/:id/edit' do
+    if logged_in?
       @kid = Kid.find(params[:id])
       erb :'kids/edit'
+    else
+      redirect to '/login'
     end
+  end
 
-  patch '/kids/:id' do #edit action
-    @kid = Kid.find(params[:id])
-    @kid.name = params[:name]
-    @kid.stage_id = params[:stage_id]
-    @kid.save
-    redirect to "/kids/#{@kid.id}"
+  patch '/kids/:id' do
+    if logged_in?
+      @kid = Kid.find(params[:id])
+      @kid.name = params[:name]
+      @kid.stage_id = params[:stage_id]
+      @kid.save
+      redirect to "/kids/#{@kid.id}"
+    else
+      redirect to '/login'
+    end
+  end
+
+  delete '/kids/:id/delete' do
+    if logged_in?
+      @kid = Kid.find_by_id(params[:id])
+      if @kid && current_user.kids.include?(@kid)
+        @kid.delete
+      end
+      redirect to '/tweets'
+    else
+      redirect to '/login'
+    end
   end
 
 

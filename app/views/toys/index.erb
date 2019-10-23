@@ -1,4 +1,4 @@
-<% if logged_in? %>
+
     <h2>Toys you've collected:</h2>
     <% if current_user.toys.empty? %>
       <p>You have 0 zero toys tracked.<p>
@@ -10,8 +10,3 @@
     </ul>
   <% end %>
     <a href="/toys/new"> Track a New Toy!</a>
-  <% else %>
-  <p>Please log in or signup below:</p>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
-  <%end %>
