@@ -1,5 +1,5 @@
-<h3><%= @kid.name %></h3>
-<p><%= @kid.stage.name %></p>
+<h2><%= @kid.name %></h2>
+<h3><%= @kid.stage.name %></h3>
 <a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details'</a>
 <br>
 
@@ -11,7 +11,7 @@
     <% @kid.toys.each do |toy| %>
       <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
     <% end %>
+  </ul>
   <% end %>
   <br>
   <a href="/toys/new"> Add a Damn Toy!</a>
-</ul>

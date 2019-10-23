@@ -1,11 +1,11 @@
 <nav>
   <% if logged_in? %>
-    <p><strong>Development Stages</strong></p>
-
+    <h2>Development Stages</h2>
+    <ul>
     <% @categories.each do |category| %>
       <li><a href="/categories/<%=category.id%>"><%= category.name %></a></li>
-      <br>
-  <% end %>
+      <% end %>
+    </ul>
   <% else %>
   <p>Please log in or signup below:</p>
     <a href="/signup">Sign Up</a>

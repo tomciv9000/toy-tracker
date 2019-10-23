@@ -1,4 +1,4 @@
-<h1>Edit <%= @kid.name %>'s Details'</h1>
+<h2>Edit <%= @kid.name %>'s Details'</h2>
 <form action="/kids/<%= @kid.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" name="name" id="name" value="<%= @kid.name %>">

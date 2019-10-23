@@ -1,13 +1,13 @@
 <nav>
   <% if logged_in? %>
-    <p><strong>Toy Categories</strong></p>
-
+    <h2>Categories</h2>
+    <ul>
     <% @categories.each do |category| %>
       <li><a href="/categories/<%=category.id%>"><%= category.name %></a></li>
-      <br>
-  <% end %>
+      <% end %>
+    </ul>
   <% else %>
-  <p>Please log in or signup below:</p>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
+    <p>Please log in or signup below:</p>
+      <a href="/signup">Sign Up</a>
+      <a href="/login"> Log In </a>
   <%end %>
