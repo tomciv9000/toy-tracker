@@ -37,6 +37,7 @@ use Rack::Flash
 		  session[:user_id] = user.id
 		  redirect '/kids'
 		else
+      flash[:message] = "Unable to log in with those credentials."
 		  redirect '/signup'
 		end
   end
