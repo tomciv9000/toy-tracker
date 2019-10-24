@@ -24,9 +24,9 @@
     </nav>
     <div class="container">
       <h1>Toy Tracker</h1>
-      <% if !@error_message.nil? %>
-      <div class="alert alert-warning">
-        <%= @error_message %>
+      <% if flash.has?(:message) %>
+      <div class="alert message">
+        <%= flash[:message] %>
       </div>
     <% end %>
       <%= yield %>
