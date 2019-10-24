@@ -46,4 +46,34 @@ class ToysController < ApplicationController
     end
   end
 
+  patch '/toys/:id' do
+    if logged_in?
+      @toy = Toy.find(params[:id])
+      if @toy && current_user.toys.include?(@toy)
+        @toy.name = params[:name]
+        @toy.stage_id = params[:stage_id]
+        @toy.kid_id = params[:kid_id]
+        @toy.save
+        redirect to "/toys/#{@toy.id}"
+      else
+        redirect to "/toys"
+    else
+      redirect to '/login'
+    end
+  end
+
+  delete '/toy/:id/delete' do
+    if logged_in?
+      @toy = Toy.find_by_id(params[:id])
+      if @toy && current_user.toys.include?(@toy)
+        @toy.delete
+      else
+        redirect to "/toys"
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
+
 end

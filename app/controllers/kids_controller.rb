@@ -70,7 +70,7 @@ class KidsController < ApplicationController
       if @kid && current_user.kids.include?(@kid)
         @kid.delete
       end
-      redirect to '/tweets'
+      redirect to '/kids'
     else
       redirect to '/login'
     end
