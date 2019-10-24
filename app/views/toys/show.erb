@@ -1,3 +1,6 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <h3><%= @toy.name %></h3>
 
 <% @toy.categories.each do |category| %>

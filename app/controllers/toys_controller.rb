@@ -1,4 +1,7 @@
+require 'sinatra/base'
+require 'rack-flash'
 class ToysController < ApplicationController
+  use Rack::Flash
 
   get '/toys' do
     if logged_in?
@@ -26,6 +29,7 @@ class ToysController < ApplicationController
       else
         @toy = Toy.new(params[:toy])
         if @toy.save
+          flash[:message] = "Successfully added toy."
           redirect to "/toys/#{@toy.id}"
         else
           redirect to "/toys/new"
