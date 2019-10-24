@@ -1,5 +1,7 @@
+require 'sinatra/base'
+require 'rack-flash'
 class StagesController < ApplicationController
-
+use Rack::Flash
   get '/stages' do
     if logged_in?
       @stages = Stage.development_stages

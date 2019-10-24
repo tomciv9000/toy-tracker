@@ -1,7 +1,7 @@
-<h2><%= @kid.name %></h2>
-  <ul>
-    <li><a href="/stage/<%=@kid.stage.id%>"><%= @kid.stage.name %></a></li>
-  </ul>
+<h2><%= @kid.name %>
+<small class="text-muted">(<%= @kid.stage.name %>)</small>
+</h2>
+
 <h3>Toys</h3>
   <% if @kid.toys.empty? %>
     <p>Looks like <%= @kid.name %>'s toybox is empty!</p>

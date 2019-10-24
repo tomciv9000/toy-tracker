@@ -1,5 +1,7 @@
+require 'sinatra/base'
+require 'rack-flash'
 class KidsController < ApplicationController
-
+use Rack::Flash
   get '/kids' do
     if logged_in?
       erb:'kids/index'

@@ -14,7 +14,7 @@
       <a href="/stages"> Development Stages </a> |
       <a href="/users/<%=current_user.id%>"> Account </a> |
       <a href="/logout"> Log Out </a>
-        <p>Hang in there, <%=current_user.username %></p>
+        <p class="lead">Hang in there, <%=current_user.username %></p>
 
       <% else %>
         <a href="/signup">Sign Up</a> |
@@ -26,7 +26,7 @@
       <h1>Toy Tracker</h1>
       <% if flash.has?(:message) %>
       <div class="alert message">
-        <%= flash[:message] %>
+        <mark><%= flash[:message] %></mark>
       </div>
     <% end %>
       <%= yield %>

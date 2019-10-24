@@ -1,5 +1,7 @@
+require 'sinatra/base'
+require 'rack-flash'
 class CategoriesController < ApplicationController
-
+use Rack::Flash
   get '/categories' do
     if logged_in?
       @categories = Category.list_categories
