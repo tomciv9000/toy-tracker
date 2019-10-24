@@ -18,10 +18,7 @@
       <ul>
         <% @user_kids_by_stage.each do |kid| %>
         <li>
-          <a href="/kids/<%= toy.kid.id %>">(<%= toy.kid.name %>)</a></li>
+          <a href="/kids/<%= kid.id %>">(<%= kid.name %>)</a></li>
         <% end %>
       </ul>
-
-
-    @user_kids_by_stage = []
-    @user_toys_by_stage = []
+      <% end %>
