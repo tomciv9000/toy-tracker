@@ -4,5 +4,5 @@ class Toy < ActiveRecord::Base
   belongs_to :stage
   has_many :toy_categories
   has_many :categories, :through => :toy_categories
-
+  validates :name, :stage, :kid, presence: true
  end

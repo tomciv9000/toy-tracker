@@ -24,23 +24,19 @@ class ToysController < ApplicationController
 
   post '/toys' do
     if logged_in?
-      if params[:toy][:name] == "" || !params[:toy][:stage_id] || !params[:toy][:kid_id]
-        flash[:message] = "You must assign a toy NAME, STAGE, and KID"
+      @toy = Toy.new(params[:toy])
+      if !@toy.valid?
+        flash[:errors] = @toy.errors.full_messages
         redirect to "/toys/new"
       else
-        @toy = Toy.new(params[:toy])
-        if @toy.save
-          flash[:message] = "Successfully added toy."
-          redirect to "/toys/#{@toy.id}"
-        else
-          redirect to "/toys/new"
-        end
+        @toy.save
+        flash[:message] = "Successfully added toy."
+        redirect to "/toys/#{@toy.id}"
       end
     else
       redirect to '/login'
     end
   end
-
 
   get '/toys/:id' do
     if logged_in?
