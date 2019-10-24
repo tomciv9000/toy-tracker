@@ -2,7 +2,7 @@ class Kid < ActiveRecord::Base
   belongs_to :user
   belongs_to :stage
   has_many :toys
-
+  validates :name, :stage, :user, presence: true
 
 ### these methods were an attempt to create a slug that allowed for duplicate names
   # def slug_id
