@@ -3,8 +3,5 @@ class User < ActiveRecord::Base
   has_many :kids
   has_many :toys, :through => :kids
   validates :username, :email, presence: true
-  validates_uniqueness_of :username, :message => 'Username already taken.'
-
-
-
+  validates_uniqueness_of :username
 end
