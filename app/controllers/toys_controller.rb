@@ -51,12 +51,21 @@ class ToysController < ApplicationController
     if logged_in?
       @toy = Toy.find(params[:id])
       if @toy && current_user.toys.include?(@toy)
-        @toy.name = params[:name]
-        @toy.stage_id = params[:stage_id]
-        @toy.kid_id = params[:kid_id]
-        @toy.save
-        redirect to "/toys/#{@toy.id}"
+        @toy.assign_attributes(params[:toy])
+        #POSSIBLE ISSUE WITH PARAMS HASH INCLUDING THE ID KEY FROM THE ROUTE
+        # @toy.name = params[:name]
+        # @toy.stage_id = params[:stage_id]
+        # @toy.kid_id = params[:kid_id]
+        if !@toy.valid?
+          flash[:errors] = @toy.errors.full_messages
+          redirect to "/toys/#{@toy.id}"
+        else
+          @toy.save
+          flash[:message] = "Successfully updated toy."
+          redirect to "/toys/#{@toy.id}"
+        end
       else
+        flash[:message] = "You do not have access to that toy."
         redirect to "/toys"
       end
     else
