@@ -25,6 +25,7 @@ class ToysController < ApplicationController
   post '/toys' do
     if logged_in?
       if params[:toy][:name] == "" || !params[:toy][:stage_id] || !params[:toy][:kid_id]
+        flash[:message] = "You must assign a toy NAME, STAGE, and KID"
         redirect to "/toys/new"
       else
         @toy = Toy.new(params[:toy])
