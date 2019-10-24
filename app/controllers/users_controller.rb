@@ -11,12 +11,13 @@ use Rack::Flash
   end
 
   post '/signup' do
-    binding.pry
     @user = User.new(params)
     if !@user.valid?
-      redirect to '/signup'
+      flash[:errors] = @user.errors.full_messages
+      redirect to 'signup'
     else
      @user.save
+     flash[:message] = "Successfully created your account!"
      session[:user_id] = @user.id
      redirect to '/kids'
     end
@@ -49,6 +50,7 @@ use Rack::Flash
     end
   end
 
+
   get '/users/:id' do
     if logged_in? && current_user.id == params[:id].to_i
       @user = User.find(params[:id])
@@ -57,6 +59,8 @@ use Rack::Flash
       redirect '/login'
     end
   end
+
+
 
 
 end
