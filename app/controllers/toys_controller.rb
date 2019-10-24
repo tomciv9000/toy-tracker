@@ -57,16 +57,18 @@ class ToysController < ApplicationController
         redirect to "/toys/#{@toy.id}"
       else
         redirect to "/toys"
+      end
     else
       redirect to '/login'
     end
   end
 
-  delete '/toy/:id/delete' do
+  delete '/toys/:id/delete' do
     if logged_in?
       @toy = Toy.find_by_id(params[:id])
       if @toy && current_user.toys.include?(@toy)
         @toy.delete
+        redirect to "/toys"
       else
         redirect to "/toys"
       end

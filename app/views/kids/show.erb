@@ -13,7 +13,7 @@
   </ul>
   <% end %>
   <br>
-  <a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details'</a>
+  <a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details</a>
 
   <form method="post" action="/kids/<%=@kid.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">

@@ -5,7 +5,7 @@
 <% end %><br>
   <a href="/kids/<%= @toy.kid.id %>">Belongs to <%= @toy.kid.name %> </a>
 <br>
-  <a href="/toy/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s details'</a>
+  <a href="/toy/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s Details</a>
 
   <form method="post" action="/toys/<%=@toy.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
