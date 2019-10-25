@@ -32,13 +32,17 @@ class ToysController < ApplicationController
   get '/toys/:id' do
     redirect_if_not_logged_in
     @toy = Toy.find(params[:id])
-    erb :'toys/show'
+    if current_user.toys.include?(@toy)
+      erb :'toys/show'
+    else
+      flash[:errors] = "Can't find that toy!"
+      redirect to '/toys'
   end
 
   patch '/toys/:id' do
     redirect_if_not_logged_in
     @toy = Toy.find(params[:id])
-    if @toy && current_user.toys.include?(@toy)
+    if current_user.toys.include?(@toy)
       @toy.assign_attributes(params[:toy])
       if !@toy.valid?
         flash[:errors] = @toy.errors.full_messages
@@ -55,16 +59,13 @@ class ToysController < ApplicationController
   end
 
   delete '/toys/:id/delete' do
-    if logged_in?
-      @toy = Toy.find_by_id(params[:id])
-      if @toy && current_user.toys.include?(@toy)
-        @toy.delete
-        redirect to "/toys"
-      else
-        redirect to "/toys"
-      end
+    redirect_if_not_logged_in
+    @toy = Toy.find_by_id(params[:id])
+    if current_user.toys.include?(@toy)
+      @toy.delete
+      redirect to "/toys"
     else
-      redirect to '/login'
+      redirect to "/toys"
     end
   end
 
