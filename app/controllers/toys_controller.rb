@@ -37,6 +37,7 @@ class ToysController < ApplicationController
     else
       flash[:errors] = "Can't find that toy!"
       redirect to '/toys'
+    end
   end
 
   patch '/toys/:id' do

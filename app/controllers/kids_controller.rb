@@ -6,12 +6,12 @@ class KidsController < ApplicationController
 
   get '/kids' do
     redirect_if_not_logged_in
-      erb:'kids/index'
+    erb:'kids/index'
   end
 
   get '/kids/new' do
     redirect_if_not_logged_in
-      erb :'/kids/new'
+    erb :'/kids/new'
   end
 
   post '/kids' do
