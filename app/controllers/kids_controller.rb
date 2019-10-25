@@ -1,37 +1,29 @@
 require 'sinatra/base'
 require 'rack-flash'
+
 class KidsController < ApplicationController
-use Rack::Flash
+  use Rack::Flash
+
   get '/kids' do
-    if logged_in?
+    redirect_if_not_logged_in
       erb:'kids/index'
-    else
-      redirect to '/login'
-    end
   end
 
   get '/kids/new' do
-    if logged_in?
+    redirect_if_not_logged_in
       erb :'/kids/new'
-    else
-      erb :'/users/login'
-    end
   end
 
   post '/kids' do
-    if logged_in?
-      if params[:name] == "" || !params[:stage_id]
-        redirect to "/kids/new"
-      else
-        @kid = current_user.kids.build(params)
-        if @kid.save
-          redirect to "/kids/#{@kid.id}"
-        else
-          redirect to "/kids/new"
-        end
-      end
+    redirect_if_not_logged_in
+    @kid = current_user.kids.build(params[:kid])
+    if !@kid.valid?
+      flash[:errors] = @kid.errors.full_messages
+      redirect to "/kids/new"
     else
-      redirect to '/login'
+      @kid.save
+      flash[:message] = "Succesfully added kid!"
+      redirect to "/kids/#{@kid.id}"
     end
   end
 

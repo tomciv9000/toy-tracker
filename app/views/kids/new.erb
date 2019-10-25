@@ -2,12 +2,12 @@
 
 <form action="/kids" method="POST">
   <label>Name: </label>
-  <input type="text" name="name"> </br>
+  <input type="text" name="kid[name]"> </br>
   <br>
   <label> Select Development Stage </label>
   <br>
   <% Stage.development_stages.each do |stage| %>
-    <input type="radio" name="stage_id" id="<%= stage.id %>" value="<%= stage.id %>"><%= stage.name %><br>
+    <input type="radio" name="kid[stage_id]" id="<%= stage.id %>" value="<%= stage.id %>"><%= stage.name %><br>
   <% end %>
   <br>
 

@@ -1,7 +1,9 @@
 require 'sinatra/base'
 require 'rack-flash'
+
 class UsersController < ApplicationController
-use Rack::Flash
+  use Rack::Flash
+
   get '/signup' do
     if logged_in?
       redirect to '/kids'
@@ -23,13 +25,29 @@ use Rack::Flash
     end
   end
 
+  # get '/login' do
+  #   if !logged_in?
+  #     erb :'/users/login'
+  #   else
+  #     redirect '/kids'
+  #   end
+  # end
+
   get '/login' do
-    if !logged_in?
-      erb :'/users/login'
-    else
-      redirect '/kids'
+      flash[:message] = params[:error]
+      if !session[:user_id]
+        erb :'users/login'
+      else
+        redirect '/bags'
+      end
     end
-  end
+
+
+
+
+
+
+
 
   post '/login' do
     user = User.find_by(:username => params[:username])
@@ -44,10 +62,10 @@ use Rack::Flash
 
   get '/logout' do
     if logged_in?
-      session.clear
+      session.destory
       redirect '/login'
     else
-      redirect '/login'
+      redirect '/'
     end
   end
 

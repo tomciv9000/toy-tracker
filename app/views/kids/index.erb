@@ -1,4 +1,3 @@
-<% if logged_in? %>
     <h2>Your Kids:</h2>
       <% if current_user.kids.empty? %>
       <ul>
@@ -12,8 +11,3 @@
       </ul>
       <% end %>
     <a href="/kids/new"> Register New Kid!</a>
-  <% else %>
-    <p>Please log in or signup below:</p>
-      <a href="/signup">Sign Up</a>
-      <a href="/login"> Sign In </a>
-  <%end %>
