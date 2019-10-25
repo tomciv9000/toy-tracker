@@ -29,32 +29,43 @@ class KidsController < ApplicationController
 
 
   get "/kids/:id" do
-    if logged_in?
-      @kid = Kid.find(params[:id])
+    redirect_if_not_logged_in
+    @kid = Kid.find(params[:id])
+    if @kid && current_user.kids.include?(@kid)
       erb :'kids/show'
     else
-    redirect to '/login'
+      flash[:errors] = "Not one of yours!"
+      redirect to '/kids'
     end
   end
 
   get '/kids/:id/edit' do
-    if logged_in?
-      @kid = Kid.find(params[:id])
+    redirect_if_not_logged_in
+    @kid = Kid.find(params[:id])
+    if current_user.kids.include?(@kid)
       erb :'kids/edit'
     else
-      redirect to '/login'
+      flash[:errors] = "Not one of yours!"
+      redirect to '/kids'
     end
   end
 
   patch '/kids/:id' do
-    if logged_in?
-      @kid = Kid.find(params[:id])
-      @kid.name = params[:name]
-      @kid.stage_id = params[:stage_id]
-      @kid.save
-      redirect to "/kids/#{@kid.id}"
+    redirect_if_not_logged_in
+    @kid = Kid.find(params[:id])
+    if current_user.kids.include?(@kid)
+      @kid.assign_attributes(params[:kid])
+      if !@kid.valid?
+        flash[:errors] = @kid.errors.full_messages
+        redirect to "/kids/#{@toy.id}"
+      else
+        @kid .save
+        flash[:message] = "Successfully updated kid"
+        redirect to "/kids/#{@kid.id}"
+      end
     else
-      redirect to '/login'
+      flash[:message] = "Not one of yours!"
+      redirect to "/kids"
     end
   end
 

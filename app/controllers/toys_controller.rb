@@ -61,7 +61,7 @@ class ToysController < ApplicationController
           redirect to "/toys/#{@toy.id}"
         else
           @toy.save
-          flash[:message] = "Successfully updated toy."
+          flash[:message] = "Successfully updated toy"
           redirect to "/toys/#{@toy.id}"
         end
       else
