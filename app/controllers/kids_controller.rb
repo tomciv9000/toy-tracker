@@ -31,7 +31,7 @@ class KidsController < ApplicationController
   get "/kids/:id" do
     redirect_if_not_logged_in
     @kid = Kid.find(params[:id])
-    if @kid && current_user.kids.include?(@kid)
+    if current_user.kids.include?(@kid)
       erb :'kids/show'
     else
       flash[:errors] = "Not one of yours!"

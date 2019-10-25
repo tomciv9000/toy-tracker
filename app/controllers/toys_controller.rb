@@ -4,72 +4,53 @@ class ToysController < ApplicationController
   use Rack::Flash
 
   get '/toys' do
-    if logged_in?
-      erb:'toys/index'
-    else
-      redirect to '/login'
-    end
+    redirect_if_not_logged_in
+    erb:'toys/index'
   end
 
   get '/toys/new' do
-    if logged_in?
-      @categories = Category.list_categories
-      @stages = Stage.development_stages
-      erb :'/toys/new'
-    else
-      erb :'/users/login'
-    end
+    redirect_if_not_logged_in
+    @categories = Category.list_categories
+    @stages = Stage.development_stages
+    erb :'/toys/new'
   end
 
 
   post '/toys' do
-    if logged_in?
-      @toy = Toy.new(params[:toy])
-      if !@toy.valid?
-        flash[:errors] = @toy.errors.full_messages
-        redirect to "/toys/new"
-      else
-        @toy.save
-        flash[:message] = "Successfully added toy."
-        redirect to "/toys/#{@toy.id}"
-      end
+    redirect_if_not_logged_in
+    @toy = Toy.new(params[:toy])
+    if !@toy.valid?
+      flash[:errors] = @toy.errors.full_messages
+      redirect to "/toys/new"
     else
-      redirect to '/login'
+      @toy.save
+      flash[:message] = "Successfully added toy."
+      redirect to "/toys/#{@toy.id}"
     end
   end
 
   get '/toys/:id' do
-    if logged_in?
-      @toy = Toy.find(params[:id])
-      erb :'toys/show'
-    else
-      redirect to '/login'
-    end
+    redirect_if_not_logged_in
+    @toy = Toy.find(params[:id])
+    erb :'toys/show'
   end
 
   patch '/toys/:id' do
-    if logged_in?
-      @toy = Toy.find(params[:id])
-      if @toy && current_user.toys.include?(@toy)
-        @toy.assign_attributes(params[:toy])
-        #POSSIBLE ISSUE WITH PARAMS HASH INCLUDING THE ID KEY FROM THE ROUTE
-        # @toy.name = params[:name]
-        # @toy.stage_id = params[:stage_id]
-        # @toy.kid_id = params[:kid_id]
-        if !@toy.valid?
-          flash[:errors] = @toy.errors.full_messages
-          redirect to "/toys/#{@toy.id}"
-        else
-          @toy.save
-          flash[:message] = "Successfully updated toy"
-          redirect to "/toys/#{@toy.id}"
-        end
+    redirect_if_not_logged_in
+    @toy = Toy.find(params[:id])
+    if @toy && current_user.toys.include?(@toy)
+      @toy.assign_attributes(params[:toy])
+      if !@toy.valid?
+        flash[:errors] = @toy.errors.full_messages
+        redirect to "/toys/#{@toy.id}"
       else
-        flash[:message] = "You do not have access to that toy."
-        redirect to "/toys"
+        @toy.save
+        flash[:message] = "Successfully updated toy"
+        redirect to "/toys/#{@toy.id}"
       end
     else
-      redirect to '/login'
+      flash[:message] = "You do not have access to that toy."
+      redirect to "/toys"
     end
   end
 
