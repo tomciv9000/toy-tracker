@@ -57,7 +57,7 @@ class KidsController < ApplicationController
       @kid.assign_attributes(params[:kid])
       if !@kid.valid?
         flash[:errors] = @kid.errors.full_messages
-        redirect to "/kids/#{@toy.id}"
+        redirect to "/kids/#{@kid.id}"
       else
         @kid .save
         flash[:message] = "Successfully updated kid"
