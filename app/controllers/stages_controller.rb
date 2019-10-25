@@ -3,16 +3,13 @@ require 'rack-flash'
 class StagesController < ApplicationController
 use Rack::Flash
   get '/stages' do
-    if logged_in?
+    redirect_if_not_logged_in
       @stages = Stage.development_stages
       erb:'stages/index'
-    else
-      redirect to '/login'
-    end
   end
 
   get "/stages/:id" do
-    if logged_in?
+    redirect_if_not_logged_in
       @stage = Stage.find(params[:id])
       @user_kids_by_stage = []
       @user_toys_by_stage = []
@@ -27,9 +24,6 @@ use Rack::Flash
         end
       end
       erb :'stages/show'
-    else
-    redirect to '/login'
-    end
   end
 
 end
