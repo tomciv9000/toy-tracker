@@ -70,14 +70,14 @@ class KidsController < ApplicationController
   end
 
   delete '/kids/:id/delete' do
-    if logged_in?
-      @kid = Kid.find_by_id(params[:id])
-      if @kid && current_user.kids.include?(@kid)
-        @kid.delete
-      end
-      redirect to '/kids'
+    redirect_if_not_logged_in
+    @kid = Kid.find_by_id(params[:id])
+    if current_user.kids.include?(@kid)
+      @kid.delete
+      flash[:message] = "Successfully deleted kid"
     else
-      redirect to '/login'
+      flash[:message] = "Not one of yours!"
+      redirect to '/kids'
     end
   end
 
