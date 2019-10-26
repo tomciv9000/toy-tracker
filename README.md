@@ -1,6 +1,3 @@
-# toy-tracker
-A MVC Sinatra app that serves as a CMS
-
 # Toy Tracker
 Toy Tracker is a simple Content Management System to track your kids' toys.  A user can register and then store information about their child's ever-growing toy collection.  
 
@@ -18,4 +15,7 @@ The requirements of this app were to:
 - Once logged in, a user must have the ability to create, read, update and destroy the resource that belongs_to user.
 - Ensure that users can edit and delete only their own resources - not resources created by other users.
 - Validate user input so bad data cannot be persisted to the database.
-- BONUS: Display validation failures to user with error messages. 
+- BONUS: Display validation failures to user with error messages.
+
+## License
+This application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
