@@ -1,6 +1,9 @@
-<h3><%= @kid.name %> <small class="text-muted">:<%= @kid.stage.name %></small></h3>
-<p><a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details</a></p>
-<h4><%= @kid.name %>'s Toybox:</h4>
+<h3><%= @kid.name %></h3>
+<strong>Development Stage:</strong>
+<%= @kid.stage.name %>
+<br><br>
+
+<strong><%= @kid.name %>'s Toybox:</strong>
   <% if @kid.toys.empty? %>
   <ul class="list-unstyled">
     <li><i>Looks like this toybox is empty!</i></li>
@@ -13,6 +16,7 @@
     <% end %>
   </ul>
   <% end %>
+  <a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details</a>
 <p>
   <form method="post" action="/kids/<%=@kid.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
