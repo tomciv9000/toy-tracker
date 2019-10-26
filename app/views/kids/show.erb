@@ -2,8 +2,9 @@
 <p><a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details</a></p>
 <h4><%= @kid.name %>'s Toybox:</h4>
   <% if @kid.toys.empty? %>
-  <ul>
-    <li>Looks like this toybox is empty!</li>
+  <ul class="list-unstyled">
+    <li><i>Looks like this toybox is empty!</i></li>
+    <li><a href="/toys/new"> Add New Toy! </a></li>
   </ul>
   <% else %>
   <ul>
@@ -12,7 +13,7 @@
     <% end %>
   </ul>
   <% end %>
-<br>
+<p>
   <form method="post" action="/kids/<%=@kid.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Kid">

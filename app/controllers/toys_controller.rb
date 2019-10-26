@@ -40,6 +40,19 @@ class ToysController < ApplicationController
     end
   end
 
+  get '/toys/:id/edit' do
+    redirect_if_not_logged_in
+    @categories = Category.list_categories
+    @stages = Stage.development_stages
+    @toy = Toy.find(params[:id])
+    if current_user.toys.include?(@toy)
+      erb :'toys/edit'
+    else
+      flash[:errors] = "Can't find that toy!"
+      redirect to '/toys'
+    end
+  end
+
   patch '/toys/:id' do
     redirect_if_not_logged_in
     @toy = Toy.find(params[:id])

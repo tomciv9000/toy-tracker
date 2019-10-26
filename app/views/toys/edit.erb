@@ -1,22 +1,27 @@
-<h3>Edit <%= @toy.name %>'s Details'</h3>
+<h3>Edit <%= @toy.name %></h3>
 <form action="/toys/<%= @toy.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
+  <strong><label for ="toy[name]">Toy Name:</label></strong>
   <input type="text" name="name" id="toy[name]" value="<%= @toy.name %>">
-  <label>Select all categories that apply to this toy:</label>
+  <br><br>
+  <strong><label>Select all categories that apply to this toy:</label></strong>
+  <p>
     <% @categories.each do |category| %>
-      <label > <%= category.name %> </label>
-      <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"<%='checked' if @toy.catagories.include?(category)>><br>
+      <label for ="<%= category.name %>"> <%= category.name %> </label>
+      <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"<%='checked' if @toy.categories.include?(category)%>><br>
     <% end %>
   <br>
-  <label>Select the stage that applies to this toy:</label>
+  <strong>Select the stage that applies to this toy:</strong>
+  <br>
     <% @stages.each do |stage| %>
-      <label > <%= stage.name %> </label>
+      <label for ="<%= stage.name %>"> <%= stage.name %> </label>
       <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"<%='checked' if @toy.stage_id == stage.id %>><br>
     <% end %>
-
-    <h4> Who's Damn Toy Is This?</h4>
+<br>
+  <strong>Who's Damn Toy Is This?</strong>
+  <br>
     <% current_user.kids.each do |kid| %>
-    <label><%= kid.name %></label>
+    <label for = "<%= kid.id %>" ><%= kid.name %></label>
       <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>" <%='checked' if @toy.kid_id == kid.id %>><br>
     <% end %>
 

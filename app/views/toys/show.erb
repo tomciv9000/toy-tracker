@@ -1,12 +1,16 @@
 <h3><%= @toy.name %></h3>
-
+<strong>Belongs To:</strong>
+<a href="/kids/<%= @toy.kid.id %>"><%= @toy.kid.name %>'s Toybox </a>
+<br><br>
+<ul class="list-inline">
+<strong>Categories:</strong>
 <% @toy.categories.each do |category| %>
- <a href="/categories/<%= category.id %>"><%= category.name %> </a><br>
-<% end %><br>
-  <a href="/kids/<%= @toy.kid.id %>">Belongs to <%= @toy.kid.name %> </a>
-<br>
-  <a href="/toy/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s Details</a>
+  <li class="list-inline-item"><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+<% end %>
+</ul>
 
+  <a href="/toys/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s Details</a>
+<p>
   <form method="post" action="/toys/<%=@toy.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Toy">
