@@ -25,14 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # get '/login' do
-  #   if !logged_in?
-  #     erb :'/users/login'
-  #   else
-  #     redirect '/kids'
-  #   end
-  # end
-
   get '/login' do
       flash[:message] = params[:error]
       if !session[:user_id]
@@ -40,14 +32,7 @@ class UsersController < ApplicationController
       else
         redirect '/bags'
       end
-    end
-
-
-
-
-
-
-
+  end
 
   post '/login' do
     user = User.find_by(:username => params[:username])
@@ -62,7 +47,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     if logged_in?
-      session.destory
+      session.destroy
       redirect '/login'
     else
       redirect '/'

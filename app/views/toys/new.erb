@@ -15,7 +15,7 @@
       <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"><br>
     <% end %>
 
-  <h3> Who's Damn Toy Is This?</h3>
+  <h3> Which kid's toybox?</h3>
   <% current_user.kids.each do |kid| %>
     <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
   <% end %>

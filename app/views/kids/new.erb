@@ -1,12 +1,13 @@
-<h3>New Kid!</h3>
+<h3>Add a Kid!</h3>
 
 <form action="/kids" method="POST">
-  <label>Name: </label>
-  <input type="text" name="kid[name]"> </br>
+  <strong><label for = "name"> Name: </label></strong>
+  <input type="text" name="kid[name]" id="name"> </br>
   <br>
-  <label> Select Development Stage </label>
+  <strong> Select Development Stage:</strong>
   <br>
   <% Stage.development_stages.each do |stage| %>
+  <label for ="<%= stage.id %>" <%= stage.name %> </label>
     <input type="radio" name="kid[stage_id]" id="<%= stage.id %>" value="<%= stage.id %>"><%= stage.name %><br>
   <% end %>
   <br>
