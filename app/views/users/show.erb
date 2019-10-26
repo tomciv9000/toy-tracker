@@ -1,7 +1,7 @@
 <h3>Click a kid to track their toys!</h3>
 <% @user.kids.each do |kid| %>
-  <ul>
+  <ul class="list-unstyled">
     <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
   </ul>
 <% end %>
-<p>You are tracking a total of <a href="/toys"><%= @user.toys.count %> toys.</a></p>
+<strong>You are tracking a total of <a href="/toys"><%= @user.toys.count %> toys.</a></strong>

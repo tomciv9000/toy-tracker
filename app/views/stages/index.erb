@@ -1,12 +1,7 @@
-<% if logged_in? %>
-    <h3>Development Stages</h3>
-    <ul>
-    <% @stages.each do |stage| %>
-      <li><a href="/stages/<%=stage.id%>"><%= stage.name %></a></li>
-      <% end %>
-    </ul>
-  <% else %>
-  <p>Please log in or signup below:</p>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
-  <%end %>
+<h3>Development Stages</h3>
+<p>Select a stage to view associated kids and toys</p>
+  <ul class="list-unstyled">
+  <% @stages.each do |stage| %>
+    <li><a href="/stages/<%=stage.id%>"><%= stage.name %></a></li>
+    <% end %>
+  </ul>

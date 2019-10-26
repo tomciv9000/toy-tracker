@@ -1,24 +1,26 @@
-<h3>Add a Toy</h3>
+<h3>Add a Toy!</h3>
 
 <form action="/toys" method="POST">
-  <label>Name of Toy: </label>
-  <input type="text" name="toy[name]">
-  <br>
-  <h3>Select all categories that apply to this toy:</h3>
+  <strong><label for ="toy_name">Toy Name: </label></strong>
+  <input type="text" id="toy_name" name="toy[name]">
+  <br><br>
+  <strong>Select all categories that apply to this toy:</strong><br>
     <% @categories.each do |category| %>
-      <label > <%= category.name %> </label>
-      <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>"><br>
+      <input type="checkbox" id="<%= category.name %>" name="toy[category_ids][]" value="<%= category.id %>">
+      <label for="<%= category.name %>"> <%= category.name %> </label><br>
     <% end %>
-  <h3>Select the stage that applies to this toy:</h3>
+    <p>
+  <strong>Select the stage that applies to this toy:</strong><p>
     <% @stages.each do |stage| %>
-      <label > <%= stage.name %> </label>
-      <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>"><br>
+      <input type="radio" id="<%= stage.name %>" name="toy[stage_id]" value="<%= stage.id %>">
+      <label for="<%= stage.name %>"> <%= stage.name %> </label><br>
     <% end %>
-
-  <h3> Which kid's toybox?</h3>
-  <% current_user.kids.each do |kid| %>
-    <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>"><%= kid.name %><br>
-  <% end %>
+    <P>
+  <strong>Which kid's toybox?</strong><p>
+    <% current_user.kids.each do |kid| %>
+      <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>">
+      <label for="toy[kid_id]"><%= kid.name %></label><br>
+      <% end %>
   <br>
 
 

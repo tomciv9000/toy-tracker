@@ -1,4 +1,5 @@
     <h3>Categories</h3>
+    <p>Select a category to view associated toys</p>
     <ul class="list-unstyled">
     <% @categories.each do |category| %>
       <li><a href="/categories/<%=category.id%>"><%= category.name %></a></li>
