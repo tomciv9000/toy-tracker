@@ -1,5 +1,5 @@
 <% if logged_in? %>
-    <h2>Development Stages</h2>
+    <h3>Development Stages</h3>
     <ul>
     <% @stages.each do |stage| %>
       <li><a href="/stages/<%=stage.id%>"><%= stage.name %></a></li>

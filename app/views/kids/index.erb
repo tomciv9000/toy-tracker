@@ -1,13 +1,13 @@
-    <h2>Your Kids:</h2>
-      <% if current_user.kids.empty? %>
-      <ul>
-        <li>You have 0 kids registered. Lucky.</li>
-      </ul>
-      <% else %>
-      <ul>
-        <% current_user.kids.each do |kid| %>
-          <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
-        <% end %>
-      </ul>
-      <% end %>
-    <a href="/kids/new"> Register New Kid!</a>
+<h3>Your Kids:</h3>
+  <% if current_user.kids.empty? %>
+  <ul>
+    <li>You have 0 kids registered. Lucky.</li>
+  </ul>
+  <% else %>
+  <ul>
+    <% current_user.kids.each do |kid| %>
+      <li><a href="/kids/<%=kid.id%>"><%= kid.name %> - <%= kid.stage.name %></a></li>
+    <% end %>
+  </ul>
+  <% end %>
+<a href="/kids/new"> Register New Kid!</a>

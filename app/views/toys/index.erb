@@ -1,12 +1,11 @@
-
-    <h2>Toys you've collected:</h2>
-    <% if current_user.toys.empty? %>
-      <p>You have 0 zero toys tracked.<p>
-    <% else %>
-    <ul>
-    <% current_user.toys.each do |toy| %>
-      <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
-    <% end %>
-    </ul>
+<h3>Toys you've collected:</h3>
+  <% if current_user.toys.empty? %>
+    <p>You have 0 zero toys tracked.<p>
+  <% else %>
+  <ul>
+  <% current_user.toys.each do |toy| %>
+    <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
   <% end %>
-    <a href="/toys/new"> Track a New Toy!</a>
+  </ul>
+  <% end %>
+  <a href="/toys/new"> Track a New Toy!</a>

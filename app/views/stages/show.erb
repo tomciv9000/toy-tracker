@@ -1,5 +1,5 @@
-<h2><%= @stage.name %></h2>
-<h3>Toys</h3>
+<h3><%= @stage.name %></h3>
+<h4>Toys</h4>
     <% if @user_toys_by_stage.empty? %>
     <p>Looks like you haven't registered any "<%= @stage.name.downcase %>" toys!</p>
     <% else %>
@@ -11,7 +11,7 @@
         <% end %>
       </ul>
 <% end %>
-<h3>Kids</h3>
+<h4>Kids</h4>
     <% if @user_kids_by_stage.empty? %>
     <p>Looks like you don't have any "<%= @stage.name.downcase %>" kids!</p>
     <% else %>
