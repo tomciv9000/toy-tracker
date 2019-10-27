@@ -1,8 +1,7 @@
 class Stage < ActiveRecord::Base
   has_many :kids
   has_many :toys
-  has_many :stage_categories
-  has_many :categories, :through => :stage_categories
+
 
   def self.create_development_stages
     self.create(:name=>"Infant")
