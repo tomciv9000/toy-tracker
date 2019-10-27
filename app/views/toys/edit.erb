@@ -2,7 +2,7 @@
 <form action="/toys/<%= @toy.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <strong><label for ="toy[name]">Toy Name:</label></strong>
-  <input type="text" name="name" id="toy[name]" value="<%= @toy.name %>">
+  <input type="text" name="toy[name]" id="toy[name]" value="<%= @toy.name %>">
   <br><br>
   <strong><label>Select all categories that apply to this toy:</label></strong>
   <p>
