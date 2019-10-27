@@ -1,7 +1,9 @@
 <h3><%= @toy.name %></h3>
 <strong>Belongs To:</strong>
 <a href="/kids/<%= @toy.kid.id %>"><%= @toy.kid.name %>'s Toybox </a>
-<br><br>
+<br>
+<strong>Stage:</strong>
+<a href="/stages/<%= @toy.stage.id %>"><%= @toy.stage.name %></a>
 <ul class="list-inline">
 <strong>Categories:</strong>
 <% @toy.categories.each do |category| %>
