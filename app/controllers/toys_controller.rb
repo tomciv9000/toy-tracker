@@ -77,8 +77,10 @@ class ToysController < ApplicationController
     @toy = Toy.find_by_id(params[:id])
     if current_user.toys.include?(@toy)
       @toy.delete
+      flash[:message] = "Successfully deleted toy"
       redirect to "/toys"
     else
+      flash[:message] = "You do not have access to that toy."
       redirect to "/toys"
     end
   end
