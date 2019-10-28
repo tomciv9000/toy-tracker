@@ -7,7 +7,7 @@
         <% @user_toys_by_stage.each do |toy| %>
         <li>
           <a href="/toys/<%= toy.id %>"><%= toy.name %></a> ||
-          <a href="/kids/<%= toy.kid.id %>">Belong's to <%= toy.kid.name %></a></li>
+          <a href="/kids/<%= toy.kid.id %>">Belongs to <%= toy.kid.name %></a></li>
         <% end %>
       </ul>
 <% end %>
