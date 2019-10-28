@@ -1,7 +1,5 @@
-require 'sinatra/base'
-require 'rack-flash'
+
 class ToysController < ApplicationController
-  use Rack::Flash
 
   get '/toys' do
     redirect_if_not_logged_in

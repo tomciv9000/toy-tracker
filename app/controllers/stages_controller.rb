@@ -1,7 +1,6 @@
-require 'sinatra/base'
-require 'rack-flash'
+
 class StagesController < ApplicationController
-use Rack::Flash
+
   get '/stages' do
     redirect_if_not_logged_in
       @stages = Stage.development_stages
