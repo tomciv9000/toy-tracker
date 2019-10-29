@@ -8,4 +8,4 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app'
-require 'active_support/inflector'
+#require 'active_support/inflector'
