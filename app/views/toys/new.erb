@@ -16,7 +16,7 @@
       <label for="<%= stage.name %>"> <%= stage.name %> </label><br>
     <% end %>
     <P>
-  <strong>Which kid's toybox?</strong><p>
+  <strong>Assign a kid's toybox</strong><p>
     <% current_user.kids.each do |kid| %>
       <input type="radio" name="toy[kid_id]" id="<%= kid.id %>" value="<%= kid.id %>">
       <label for="toy[kid_id]"><%= kid.name %></label><br>
