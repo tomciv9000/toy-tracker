@@ -1,7 +1,7 @@
 <h3>Development Stage : <small class="text-muted"><%= @stage.name %></small></h3>
 <h4><%= @stage.name %> Toys</h4>
     <% if @user_toys_by_stage.empty? %>
-    <p>Looks like you haven't registered any "<%= @stage.name.downcase %>" toys!</p>
+      <p>Looks like you haven't registered any "<%= @stage.name.downcase %>" toys!</p>
     <% else %>
       <ul>
         <% @user_toys_by_stage.each do |toy| %>
@@ -10,10 +10,10 @@
           <a href="/kids/<%= toy.kid.id %>">Belongs to <%= toy.kid.name %></a></li>
         <% end %>
       </ul>
-<% end %>
+    <% end %>
 <h4><%= @stage.name %> Kids</h4>
     <% if @user_kids_by_stage.empty? %>
-    <p>Looks like you don't have any "<%= @stage.name.downcase %>" kids!</p>
+      <p>Looks like you don't have any "<%= @stage.name.downcase %>" kids!</p>
     <% else %>
       <ul>
         <% @user_kids_by_stage.each do |kid| %>
@@ -21,4 +21,4 @@
           <a href="/kids/<%= kid.id %>"><%= kid.name %></a></li>
         <% end %>
       </ul>
-      <% end %>
+    <% end %>

@@ -1,7 +1,7 @@
 <h3><%= @category.name %> Category</h3>
-    <% if @user_toys_by_category.empty? %>
+  <% if @user_toys_by_category.empty? %>
     <p>Looks like you haven't registered any "<%= @category.name.downcase %>" toys!</p>
-    <% else %>
+  <% else %>
     <strong>Toys:</strong>
       <ul>
         <% @user_toys_by_category.each do |toy| %>

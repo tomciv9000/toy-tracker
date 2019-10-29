@@ -2,7 +2,6 @@ class Stage < ActiveRecord::Base
   has_many :kids
   has_many :toys
 
-
   def self.create_development_stages
     self.create(:name=>"Infant")
     self.create(:name=>"Toddler")
@@ -14,6 +13,5 @@ class Stage < ActiveRecord::Base
     Stage.create_development_stages if Stage.all.empty?
     @development_stages ||= Stage.all
   end
-
 
  end

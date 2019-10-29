@@ -2,19 +2,18 @@
 <strong>Development Stage:</strong>
 <%= @kid.stage.name %>
 <br><br>
-
 <strong><%= @kid.name %>'s Toybox:</strong>
   <% if @kid.toys.empty? %>
-  <ul class="list-unstyled">
-    <li><i>Looks like this toybox is empty!</i></li>
-    <li><a href="/toys/new"> Add New Toy! </a></li>
-  </ul>
+    <ul class="list-unstyled">
+      <li><i>Looks like this toybox is empty!</i></li>
+      <li><a href="/toys/new"> Add New Toy! </a></li>
+    </ul>
   <% else %>
-  <ul>
-    <% @kid.toys.each do |toy| %>
-      <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @kid.toys.each do |toy| %>
+        <li><a href="/toys/<%=toy.id%>"><%= toy.name %></a></li>
+      <% end %>
+    </ul>
   <% end %>
   <a href="/kids/<%=@kid.id%>/edit">Edit <%= @kid.name %>'s Details</a>
 <p>

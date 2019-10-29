@@ -10,8 +10,8 @@
   <li class="list-inline-item"><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
 <% end %>
 </ul>
+<a href="/toys/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s Details</a>
 
-  <a href="/toys/<%=@toy.id%>/edit">Edit <%= @toy.name %>'s Details</a>
 <p>
   <form method="post" action="/toys/<%=@toy.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
