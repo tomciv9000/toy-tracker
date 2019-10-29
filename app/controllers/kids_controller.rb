@@ -23,7 +23,6 @@ class KidsController < ApplicationController
     end
   end
 
-
   get "/kids/:id" do
     redirect_if_not_logged_in
     @kid = Kid.find(params[:id])
@@ -76,7 +75,5 @@ class KidsController < ApplicationController
       redirect to '/kids'
     end
   end
-
-
 
 end

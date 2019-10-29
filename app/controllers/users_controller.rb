@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   get '/signup' do
     if logged_in?
       redirect to '/kids'
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
       if !session[:user_id]
         erb :'users/login'
       else
-        redirect '/bags'
+        redirect '/kids'
       end
   end
 
@@ -52,7 +51,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   get '/users/:id' do
     if logged_in? && current_user.id == params[:id].to_i
       @user = User.find(params[:id])
@@ -61,8 +59,5 @@ class UsersController < ApplicationController
       redirect '/login'
     end
   end
-
-
-
 
 end

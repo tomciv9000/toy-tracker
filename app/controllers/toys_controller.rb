@@ -1,4 +1,3 @@
-
 class ToysController < ApplicationController
 
   get '/toys' do
@@ -12,7 +11,6 @@ class ToysController < ApplicationController
     @stages = Stage.development_stages
     erb :'/toys/new'
   end
-
 
   post '/toys' do
     redirect_if_not_logged_in
@@ -82,6 +80,5 @@ class ToysController < ApplicationController
       redirect to "/toys"
     end
   end
-
 
 end
